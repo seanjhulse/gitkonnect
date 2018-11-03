@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  username: sean
+  password: 
+
+development:
+  <<: *default
+  database: gitkonnect
+
+test:
+  <<: *default
+  database: gitkonnect_test
+
+production:
+  <<: *default
+  database: gitkonnect_production

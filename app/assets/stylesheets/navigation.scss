@@ -1,0 +1,34 @@
+nav.navigation {
+  --navigation-padding: 10px; 
+  padding: var(--navigation-padding);
+  background-color: var(--steel);
+  border-bottom: 2px solid var(--green);
+}
+ul.navigation-list {
+  margin: 0;
+  padding: 0;
+}
+li.navigation-item {
+  display: inline;
+  list-style: none;
+}
+.navigation-links {
+  float: right;
+  padding-top: calc(var(--navigation-padding) / 2);
+}
+a.navigation-link {
+  color: var(--white);
+  text-decoration: none;
+  padding-right: 10px;
+}
+a.regular-navigation-link {
+  letter-spacing: 1px;
+}
+.branding {
+  font-size: 26px;
+  font-weight: bold;
+}
+a.branding-link {
+  letter-spacing: 1px;
+  color: var(--green);
+}

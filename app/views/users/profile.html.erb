@@ -1,0 +1,8 @@
+<p><%= current_user.username %></p>
+<ul>
+<% @repos.each do |repo| %>
+  <li>
+    <%= repo["html_url"] %>
+  </li>
+<% end %>
+</ul>

@@ -1,0 +1,41 @@
+<% 
+  @urls = [
+    {
+      name: 'Posts',
+      link: '/posts'
+    },
+  ]
+
+  if current_user
+    @urls.push({
+      name: 'Profile',
+      link: '/profile'
+    },
+    {
+      name: 'Logout',
+      link: destroy_user_session_path,
+      params: ' rel=nofollow data-method=delete '
+    })
+  else
+    @urls.push({
+      name: 'Login with Github',
+      link: '/users/auth/github'
+    })
+  end
+
+%>
+
+<nav class="navigation">
+  <ul class="navigation-list">
+    <li class="navigation-item branding">
+      <a class="navigation-link branding-link" href="/">Gitkonnect</a>
+    </li>
+    <span class="navigation-links">
+      <% @urls.each do |url| %>
+      <li class="navigation-item">
+        <a class="navigation-link regular-navigation-link" href="<%= url[:link] %>" <%= url[:params] if url[:params] %>><%= url[:name] %></a>
+      </li>
+      <% end %>
+    </span>
+  </ul>
+</nav>
