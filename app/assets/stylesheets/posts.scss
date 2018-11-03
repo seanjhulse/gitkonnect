@@ -1,3 +1,73 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.posts-layout {
+  display: block;
+  @media (min-width: 800px) {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+  }
+}
+
+.community-board-title {
+  background-color: var(--steel);
+  padding: 10px;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: white;
+  margin-bottom: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.community-board {
+  padding: 10px;
+}
+
+.posts-body {
+  padding: 0 25px;
+}
+ul.posts-list {
+  margin: 0;
+  padding: 0;
+}
+li.posts-item {
+  list-style: none;
+  padding: 10px 0;
+  border-bottom: 1px solid #c1c1c1;
+}
+.post-link {
+  text-decoration: none;
+}
+.post-title {
+  color: black;
+  font-weight: bold;
+  margin: 0;
+}
+.post-author {
+  text-decoration: none;
+  font-size: 12px;
+  margin: 0;
+  color: #555;
+}
+
+.post {
+  padding: 25px 0;
+}
+.post-description-label {
+  font-size: 12px;
+  font-weight: normal;
+  color: #777;
+  right: 10px;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: absolute;
+  top: 10px;
+  text-transform: uppercase;
+}
+.description {
+  margin-top: 25px;
+  padding: 10px;
+  position: relative;
+  border: 1px solid #d4d4d4;
+}

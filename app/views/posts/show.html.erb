@@ -1,0 +1,13 @@
+<div class="post">
+  <h1 class="post-title"><%= @post.title %></h1>
+  <p class="post-author"><%= @post.posted_by %>
+  <% if @post.user_id == current_user.id %>
+    <br/>
+    <br/>
+    <a class="button-link" href="<%= edit_post_path(@post) %>">Edit <i class="fas-top fas fa-edit"></i><i class="fas-bottom fas fa-arrow-alt-circle-right"></i></a>
+  <% end %>
+  <div class="description">
+    <h2 class="post-description-label">Description</h2>
+    <%= (@post.description).html_safe %>
+  </div>
+</div>

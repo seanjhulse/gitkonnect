@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code_theme: 1
+  user: one
+
+two:
+  code_theme: 1
+  user: two

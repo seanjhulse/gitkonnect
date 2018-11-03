@@ -10,20 +10,26 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= stub tomorrow-theme.css
  *= require_tree .
  *= require_self
  */
 
- body {
-   margin: 0;
-   --green: #7FA77A;
-   --white: #FEF9E8;
-   --beige: #E0C3AC;
-   --purple:#6E5E82;
-   --steel: #2D3F49;
-   font-family: 'IBM Plex Sans', sans-serif;
- }
+body {
+  margin: 0;
+  --green: #7FA77A;
+  --white: #FEF9E8;
+  --beige: #E0C3AC;
+  --purple:#6E5E82;
+  --steel: #2D3F49;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
 
- main {
-   padding: 0 2vw;
- }
+main {
+  padding: 0 2vw;
+}
+
+blockquote {
+  border-left: 3px solid #ccc;
+  padding-left: 10px;
+}

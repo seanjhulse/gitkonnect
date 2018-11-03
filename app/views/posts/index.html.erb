@@ -1,2 +1,24 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h1>Posts</h1>
+<div class="posts-layout">
+  <div class="posts-body">
+    <ul class="posts-list">
+      <% @posts.each do |post| %>
+        <a class="post-link" href="<%= post_path(post) %>">
+          <li class="posts-item">
+            <p class="post-title"><%= post.title %></p>
+            <p class="post-author"><%= post.posted_by %></p>
+          </li>
+        </a>
+      <% end %>
+    </ul>
+  </div>
+  <div class="posts-sidebar">
+    <div class="community-board-title"><i class="fas fa-bookmark"></i> Information</div>
+    <div class="community-board">
+      Need some help on a project?
+      <br/>
+      <br/>
+      <a class="button-link" href="/posts/new">Create a new post <i class="fas-top fas fa-question-circle"></i><i class="fas-bottom fas fa-plus-square"></i></a>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,10 @@
 <p><%= current_user.username %></p>
-<ul>
-<% @repos.each do |repo| %>
-  <li>
-    <%= repo["html_url"] %>
-  </li>
+<%= form_for(current_user.setting) do |form| %>
+  <div class="switch-visible-label">
+    Code style: Dark theme
+  </div>
+  <div class="switch">
+    <input id="switcher" type="checkbox" class="switch-input" name="setting[code_theme]" type="hidden" value="<%= current_user.setting.code_theme %>">
+    <label for="switcher" class="switch-label">Code Style: Dark Theme</label>
+  </div>
 <% end %>
-</ul>

@@ -5,13 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[github]
 
   has_many :posts
+  has_one :setting
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email    = auth.info.email
       user.password = Devise.friendly_token[0,20]
       user.username = auth.info.nickname
-
+      user.setting  = Setting.new
+      
       # If you are using confirmable and the provider(s) you use validate emails, 
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!

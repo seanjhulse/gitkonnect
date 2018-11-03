@@ -1,14 +1,9 @@
 <% 
-  @urls = [
-    {
-      name: 'Posts',
-      link: '/posts'
-    },
-  ]
+  @urls = []
 
   if current_user
     @urls.push({
-      name: 'Profile',
+      name: 'Profile <i class="far fa-user-circle"></i>',
       link: '/profile'
     },
     {
@@ -33,7 +28,7 @@
     <span class="navigation-links">
       <% @urls.each do |url| %>
       <li class="navigation-item">
-        <a class="navigation-link regular-navigation-link" href="<%= url[:link] %>" <%= url[:params] if url[:params] %>><%= url[:name] %></a>
+        <a class="navigation-link regular-navigation-link" href="<%= url[:link] %>" <%= url[:params] if url[:params] %>><%= url[:name].html_safe %></a>
       </li>
       <% end %>
     </span>

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :posts
+  resources :settings
 
-  root 'home#index'
-  get 'home/index'
+  root 'posts#index'
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   

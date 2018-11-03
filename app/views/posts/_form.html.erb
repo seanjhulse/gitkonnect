@@ -1,4 +1,20 @@
 <%= form_for(@post) do |form| %>
-  <%= form.text_field :title %>
-  <%= form.submit 'Submit' %>
+  <div class="form-field">
+    <label>Title</label>
+    <%= form.text_field :title, required: true, placeholder: "Help me build feature X" %>
+  </div>
+  <div class="form-field">
+    <label>Description</label>
+    <div id="editor"></div>
+    <%= form.text_area :description, id: 'form-data', class: 'hidden-form' %>
+  </div>
+  <div class="form-field">
+    <br/>
+    <label>Select your repo</label>
+    <%= form.select :repo, @repos.collect { |repo| [repo["name"], repo["html_url"]]}, { include_blank: "..." }, required: true %>
+  </div>
+  <div>
+    <br/>
+    <button type="submit" class="button">Submit <i class="fas-top fas fa-square"></i><i class="fas-bottom fas fa-check-square"></i></button>
+  </div>
 <% end %>
