@@ -1,10 +1,28 @@
 <p><%= current_user.username %></p>
-<%= form_for(current_user.setting) do |form| %>
-  <div class="switch-visible-label">
-    Code style: Dark theme
+<h2>Your posts</h2>
+<ul class="user-posts">
+<% @posts.each do |post| %>
+  <li class="user-post">
+    <a class="user-post-link" href="<%= post_path(post) %>"><%= post.title %></a>
+    <a class="button-link purple" href="<%= edit_post_path(post) %>">Edit <i class="fas-top fas fa-edit"></i><i class="fas-bottom fas fa-arrow-alt-circle-right"></i></a>
+    <a class="button-link red" href="<%= post_path(post) %>" data-method="delete" data-confirm="Are you sure?" rel="nofollow">Destroy <i class="fas-top fas fa-trash-alt"></i><i class="fas-bottom fas fa-arrow-alt-circle-right"></i></a>
+  </li>
+<% end %>
+</ul>
+<%= form_for(current_user.setting, remote: true) do |form| %>
+  <h2>User settings</h2>
+  <div class="user-settings">
+    <div class="user-settings-save-alert">
+      <div id="user-settings-alert">Saved!</div>
+    </div>
+    <div class="switch-visible-label">
+      Code style: Dark theme
+    </div>
+    <div class="switch">
+      <input id="switcher" type="checkbox" class="switch-input" name="setting[code_theme]" type="hidden" value="<%= current_user.setting.code_theme %>" checked="<%= current_user.setting.code_theme %>">
+      <label for="switcher" class="switch-label">Code Style: Dark Theme</label>
+    </div>
   </div>
-  <div class="switch">
-    <input id="switcher" type="checkbox" class="switch-input" name="setting[code_theme]" type="hidden" value="<%= current_user.setting.code_theme %>">
-    <label for="switcher" class="switch-label">Code Style: Dark Theme</label>
-  </div>
+  <br/>
+  <button type="submit" class="button">Save Settings <i class="fas-top fas fa-square"></i><i class="fas-bottom fas fa-check-square"></i></button>
 <% end %>

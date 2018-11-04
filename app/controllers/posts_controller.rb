@@ -68,6 +68,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    if @post.destroy
+      redirect_to root_path
+    else
+      redirect_back(fallback_location, post_path(@post), alert: @post.errors)
+    end
   end
 
   private

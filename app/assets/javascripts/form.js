@@ -31,4 +31,20 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
     editor.root.innerHTML = formData.value;
   }
+
+
+
+  // switch toggle
+  var switches = document.querySelectorAll('#switcher');
+  if(switches.length > 0) {
+    for (i = 0; i < switches.length; i++) {
+      switches[i].addEventListener('click', function(event) {
+        if(event.target.value == "" || event.target.value == 0) {
+          event.target.value = 1;
+        } else {
+          event.target.value = 0;
+        }
+      });
+    }
+  }
 });

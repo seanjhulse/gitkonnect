@@ -43,7 +43,7 @@ $switch-rail-width: 100%;
 $switch-rail-height: 100%;
 $switch-rail-background-color: #dedede;
 $switch-rail-border-radius: 9999em;
-$switch-rail-checked-background-color: #89c12d;
+$switch-rail-checked-background-color: var(--green);
 
 $switch-knob-width: 24px;
 $switch-knob-height: 24px;
@@ -122,4 +122,18 @@ $switch-knob-checked-left: $switch-knob-width;
   top: -18px;
   position: relative;
   padding-right: 10px;
+}
+.user-settings-save-alert {
+  margin-bottom: 10px;
+}
+#user-settings-alert {
+  opacity: 0;
+  font-size: 12px;
+  background: #369629;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: relative;
+  color: #ffffff;
+  display: inline;
+  transition: opacity 0.33s ease-in-out;
 }

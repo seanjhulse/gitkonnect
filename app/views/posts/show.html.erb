@@ -4,7 +4,8 @@
   <% if @post.user_id == current_user.id %>
     <br/>
     <br/>
-    <a class="button-link" href="<%= edit_post_path(@post) %>">Edit <i class="fas-top fas fa-edit"></i><i class="fas-bottom fas fa-arrow-alt-circle-right"></i></a>
+    <a class="button-link purple" href="<%= edit_post_path(@post) %>">Edit <i class="fas-top fas fa-edit"></i><i class="fas-bottom fas fa-arrow-alt-circle-right"></i></a>
+    <a class="button-link red" href="<%= post_path(@post) %>" data-method="delete" data-confirm="Are you sure?" rel="nofollow">Destroy <i class="fas-top fas fa-trash-alt"></i><i class="fas-bottom fas fa-arrow-alt-circle-right"></i></a>
   <% end %>
   <div class="description">
     <h2 class="post-description-label">Description</h2>

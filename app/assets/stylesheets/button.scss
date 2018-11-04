@@ -10,7 +10,6 @@
   text-decoration: none;
   outline: none;
   color: var(--white);
-  background-color: var(--purple);
   border: none;
   border-radius: 4px;
   box-shadow: 0px 3px #999;
@@ -26,10 +25,22 @@
   .fas-bottom {
     transform: translate(2px, 25px);
   }
+
+  &.purple {
+    background-color: var(--purple);
+  }
+  &.red {
+    background-color: #a24f4f;
+  }
 }
 
 .button-link:hover {
-  background-color: #9782b1;
+  &.purple {
+    background-color: #9782b1;
+  }
+  &.red {
+    background-color: #af4e4e;
+  }
   .fas-top {
     transform: translate(2px, 50px);
   }
@@ -39,7 +50,12 @@
 }
 
 .button-link:active {
-  background-color: #b59ad4;
+  &.purple {
+    background-color: #b59ad4;
+  }
+  &.red {
+    background-color: #c75353;
+  }
   box-shadow: 0 2px #888;
   transform: translateY(2px);
 }

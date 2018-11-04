@@ -1,9 +1,4 @@
 document.addEventListener('DOMContentLoaded', function(event) {
-
-  // configures code block styling
-  hljs.configure({
-    // classPrefix: 'tomorrow '
-  });
   
   // highlights all code blocks
   var qlCodes = document.getElementsByTagName('pre');

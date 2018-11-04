@@ -7,8 +7,11 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100i,400,400i,700,700i', media: 'all' %>
-    <%# <%= stylesheet_link_tag    'tomorrow-theme.css', media: 'all' %>
     
+    <% if current_user.setting.code_theme %>
+      <%= stylesheet_link_tag    'tomorrow-theme.css', media: 'all' %>
+    <% end %>
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
@@ -21,6 +24,13 @@
     <main>
       <%= yield %>
     </main>
-
+    <% if current_user.setting.code_theme %>
+      <script>
+        // configures code block styling
+        hljs.configure({
+          classPrefix: 'tomorrow '
+        });
+      </script>
+    <% end %>
   </body>
 </html>
