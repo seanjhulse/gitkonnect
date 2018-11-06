@@ -19,7 +19,8 @@
       Code style: Dark theme
     </div>
     <div class="switch">
-      <input id="switcher" type="checkbox" class="switch-input" name="setting[code_theme]" type="hidden" value="<%= current_user.setting.code_theme %>" checked="<%= current_user.setting.code_theme %>">
+      <%= hidden_field_tag "setting[code_theme]", '' %>
+      <input id="switcher" type="checkbox" class="switch-input" name="setting[code_theme]" type="hidden" value="<%= current_user.setting.code_theme %>" <%= current_user.setting.code_theme == 1 ? "checked" : "" %>">
       <label for="switcher" class="switch-label">Code Style: Dark Theme</label>
     </div>
   </div>

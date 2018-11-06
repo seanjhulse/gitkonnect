@@ -5,6 +5,8 @@ class SettingsController < ApplicationController
     @settings = Setting.find(current_user.setting.id)
 
     @settings.update(settings_params)
+
+    p @settings
   end
   
   private
