@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   before_action :set_any_post, only:   [:show]
 
   def index
-    @posts = Post.order_by_votes(:desc)
+    @posts = Post.all.sort_by(&:hot).reverse
   end
 
   def new
