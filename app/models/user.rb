@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[github]
 
   has_many :posts
+  has_many :votes
   has_one :setting
 
   def self.from_omniauth(auth)

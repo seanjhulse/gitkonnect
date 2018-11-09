@@ -1,0 +1,2 @@
+var currentVote = document.getElementById('vote-count-' + <%= @vote.post_id %>);
+currentVote.innerHTML = <%= Post.find(@vote.post_id).votes.sum {|vote| vote[:vote] } %>;

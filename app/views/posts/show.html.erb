@@ -1,6 +1,9 @@
 <div class="post">
   <h1 class="post-title"><%= @post.title %></h1>
   <p class="post-author"><%= @post.posted_by %>
+  <a class="action upvote upvote-icon" href="/votes/<%= @post.id %>/upvote" data-remote="true"><i class="fas fa-arrow-up"></i></a>
+  <a class="action downvote downvote-icon" href="/votes/<%= @post.id %>/downvote" data-remote="true"><i class="fas fa-arrow-down"></i></a>
+  <span id="vote-count-<%= @post.id %>"><%= @post.votes.sum {|vote| vote[:vote] } %></span>
   <% if @post.user_id == current_user.id %>
     <br/>
     <br/>

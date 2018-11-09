@@ -50,7 +50,16 @@ li.posts-item {
   margin: 0;
   color: #555;
 }
-
+.action {
+  display: inline-block;
+  cursor: pointer;
+}
+.upvote-icon {
+  color: var(--green);
+}
+.downvote-icon {
+  color: var(--steel);
+}
 .post {
   padding: 25px 0;
 }
