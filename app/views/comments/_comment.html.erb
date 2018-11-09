@@ -1,0 +1,23 @@
+<li class="comment-item">
+  <div class="comment" id="comment-<%= comment.id %>">
+    <%= comment.comment.html_safe %>
+    <a class="button-link purple" href="/post/<%= @post.id %>/comments/<%= comment.id %>/reply" data-remote="true">
+      Reply
+      <i class="fas fa-reply"></i>
+    </a>
+    <a class="button-link red" href="/comments/<%= comment.id %>" data-remote="true" data-method="delete" data-confirm="Are you sure?" rel="nofollow">
+      Delete&nbsp;
+      <i class="fas-top fas fa-trash-alt"></i>
+      <i class="fas-bottom fas fa-arrow-alt-circle-right"></i>
+    </a>
+    <a class="action upvote upvote-icon" href="/comments/<%= comment.id %>/upvote" data-remote="true"><i class="fas fa-arrow-up"></i></a>
+    <a class="action downvote downvote-icon" href="/comments/<%= comment.id %>/downvote" data-remote="true"><i class="fas fa-arrow-down"></i></a>
+    <span id="vote-count-<%= comment.id %>"><%= comment.votes.sum {|vote| vote[:vote] } %></span>
+  </div>
+  <% comment.children.hot.each do |child| %>
+    <button class="close-thread-button" onclick="this.nextSibling.nextSibling.classList.toggle('hide');">[-]</button>
+    <ul class="child-thread">
+      <%= render partial: 'comments/comment', locals: { comment: child } %>
+    </ul>
+  <% end %>
+</li>

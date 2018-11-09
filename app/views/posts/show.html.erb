@@ -1,17 +1,67 @@
 <div class="post">
   <h1 class="post-title"><%= @post.title %></h1>
   <p class="post-author"><%= @post.posted_by %>
-  <a class="action upvote upvote-icon" href="/votes/<%= @post.id %>/upvote" data-remote="true"><i class="fas fa-arrow-up"></i></a>
-  <a class="action downvote downvote-icon" href="/votes/<%= @post.id %>/downvote" data-remote="true"><i class="fas fa-arrow-down"></i></a>
+
+  <!-- Voting -->
+  <a class="action upvote upvote-icon" href="/post/<%= @post.id %>/upvote" data-remote="true"><i class="fas fa-arrow-up"></i></a>
+  <a class="action downvote downvote-icon" href="/post/<%= @post.id %>/downvote" data-remote="true"><i class="fas fa-arrow-down"></i></a>
   <span id="vote-count-<%= @post.id %>"><%= @post.votes.sum {|vote| vote[:vote] } %></span>
-  <% if @post.user_id == current_user.id %>
+  <!--/Voting -->
+
+  <% if current_user && @post.user_id == current_user.id %>
     <br/>
     <br/>
-    <a class="button-link purple" href="<%= edit_post_path(@post) %>">Edit <i class="fas-top fas fa-edit"></i><i class="fas-bottom fas fa-arrow-alt-circle-right"></i></a>
-    <a class="button-link red" href="<%= post_path(@post) %>" data-method="delete" data-confirm="Are you sure?" rel="nofollow">Destroy <i class="fas-top fas fa-trash-alt"></i><i class="fas-bottom fas fa-arrow-alt-circle-right"></i></a>
+    <a class="button-link purple" href="<%= edit_post_path(@post) %>">
+      Edit&nbsp;
+      <i class="fas-top fas fa-edit"></i>
+      <i class="fas-bottom fas fa-arrow-alt-circle-right"></i>
+    </a>
+    <a class="button-link red" href="<%= post_path(@post) %>" data-method="delete" data-confirm="Are you sure?" rel="nofollow">
+      Delete&nbsp;
+      <i class="fas-top fas fa-trash-alt"></i>
+      <i class="fas-bottom fas fa-arrow-alt-circle-right"></i>
+    </a>
   <% end %>
+
+  <!-- Github Clone Link -->
+  <a class="button-link green" id="github-link">
+    <span id="github-link-label">Clone</span>
+    <input id="github-link-text" aria-hidden="true" value="git clone <%= @post.repo %>"/>
+    <i class="fas-top fab fa-github"></i>
+    <i class="fas-bottom fas fa-code-branch"></i>
+  </a>
+  <!--/Github Clone Link -->
+
+  <!-- POST -->
   <div class="description">
     <h2 class="post-description-label">Description</h2>
     <%= (@post.description).html_safe %>
   </div>
+  <!--/POST -->
+
+  <!-- Comment Form -->
+  <%= render partial: 'comments/form.html.erb' %>
+  <!--/Comment Form -->
+
+  <h2>Comments</h2>
+  <ul class="comments" id="comments-container">
+    <% @post.comments.hot.each do |comment| %>
+      <%= render partial: comment if comment.parent.nil? %>
+    <% end %>
+  </ul>
+
+
 </div>
+
+<script>
+  var githubLink = document.getElementById('github-link');
+  githubLink.addEventListener('click', function(event) {
+    var githubText = document.querySelector('#github-link-text');
+    githubText.select();
+    document.execCommand("copy");
+    document.getElementById('github-link-label').innerHTML = 'Copied!';
+    setTimeout(function() {
+      document.getElementById('github-link-label').innerHTML = 'Clone';
+    }, 3000);
+  });
+</script>

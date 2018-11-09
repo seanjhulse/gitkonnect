@@ -1,2 +1,6 @@
-var currentVote = document.getElementById('vote-count-' + <%= @vote.post_id %>);
-currentVote.innerHTML = <%= Post.find(@vote.post_id).votes.sum {|vote| vote[:vote] } %>;
+var currentVote = document.getElementById('vote-count-' + <%= @vote.voters_id %>);
+<% if @vote.voters_type == 'Post' %>
+  currentVote.innerHTML = <%= Post.find(@vote.voters_id).votes.sum {|vote| vote[:vote] } %>;
+<% else %>
+  currentVote.innerHTML = <%= Comment.find(@vote.voters_id).votes.sum {|vote| vote[:vote] } %>;
+<% end %>

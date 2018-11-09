@@ -1,0 +1,10 @@
+<% if @comment.parent.nil? %>
+  var commentsContainer = document.getElementById('comments-container');
+  <% comment = @comment %>
+  commentsContainer.insertAdjacentHTML('afterbegin', "<%= j render(partial: 'comment', locals: { comment: comment }) %>");
+<% else %>
+  var commentsContainer = document.getElementById('comment-' + <%= @comment.parent %>);
+  <% comment = @comment %>
+  commentsContainer.insertAdjacentHTML('beforeend', "<%= j render(partial: 'comment', locals: { comment: comment }) %>");
+  commentsContainer.querySelector('form').remove();
+<% end %>

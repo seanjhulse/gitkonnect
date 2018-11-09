@@ -1,16 +1,28 @@
-class Post < ApplicationRecord
+class Comment < ApplicationRecord
+  EPOCH = DateTime.new(1970, 1, 1)
+  
+  belongs_to :post
   belongs_to :user
+  
+  # VALIDATIONS
+  validates :comment, :user_id, :post_id, :presence => true
 
+  # ASSOCIATIONS
   has_many :votes, as: :voters, dependent: :destroy
-  has_many :comments
+  has_one :parent, :foreign_key => :parent_id
 
-  validates :title, :description, :presence => true
-
-  scope :hot,    -> { sort_by(&:hot).reverse }   # hottest posts
+  # SCOPES
+  scope :hot,    -> { sort_by(&:hot) }           # hottest posts
   scope :newest, -> { order(created_at: :desc) } # most recent posts
 
+  # returns the children comments
+  def children 
+    Comment.where(parent_id: self.id)
+  end
 
-  EPOCH = DateTime.new(1970, 1, 1)
+  def parent
+    self.parent_id
+  end
 
   def posted_by
     return "Posted by #{User.find(self.user_id).username} on #{self.created_at.strftime('%A %d %b %Y')}"
@@ -36,5 +48,4 @@ class Post < ApplicationRecord
 
     return (displacement * sign.to_f) + ( epoch_seconds / 45000 )
   end 
-
 end

@@ -19,6 +19,12 @@
     top: 7px;
     transition: transform 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28);
   }
+  .fab {
+    position: absolute;
+    right: 8px;
+    top: 7px;
+    transition: transform 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  }
   .fas-top {
     transform: translate(2px, 1px);
   }
@@ -32,6 +38,9 @@
   &.red {
     background-color: #a24f4f;
   }
+  &.green {
+    background-color: #68af5f;
+  }
 }
 
 .button-link:hover {
@@ -40,6 +49,9 @@
   }
   &.red {
     background-color: #af4e4e;
+  }
+  &.green {
+    background-color: #57944f;
   }
   .fas-top {
     transform: translate(2px, 50px);
@@ -55,6 +67,9 @@
   }
   &.red {
     background-color: #c75353;
+  }
+  &.green {
+    background-color: #589450;
   }
   box-shadow: 0 2px #888;
   transform: translateY(2px);
@@ -72,11 +87,17 @@
   text-decoration: none;
   outline: none;
   color: var(--white);
-  background-color: var(--green);
+  background-color: #68af5f;
   border: none;
   border-radius: 4px;
   box-shadow: 0px 3px #999;
   .fas {
+    position: absolute;
+    right: 8px;
+    top: 7px;
+    transition: transform 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  }
+  .fab {
     position: absolute;
     right: 8px;
     top: 7px;
@@ -91,7 +112,7 @@
 }
 
 .button:hover {
-  background-color: #76a170;
+  background-color: #57944f;
   .fas-top {
     transform: translate(2px, 50px);
   }
@@ -101,7 +122,12 @@
 }
 
 .button:active {
-  background-color: #608a4d;
+  background-color: #57944f;
   box-shadow: 0 2px #888;
   transform: translateY(2px);
+}
+
+#github-link-text {
+  transform: translate(-10000px, -10000px);
+  position: absolute;
 }

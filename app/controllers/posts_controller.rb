@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   before_action :set_any_post, only:   [:show]
 
   def index
-    @posts = Post.all.sort_by(&:hot).reverse
+    @posts = Post.page(params.has_key?(:page) ? params[:page] : 1).hot
   end
 
   def new
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
       end
     end
 
-    unless valid 
+    unless valid || Rails.env.development
       redirect_back(fallback_location: new_post_path, alert: "Invalid repo. Github doesn't recognize that repo for your account.")
     end
 
@@ -56,7 +56,7 @@ class PostsController < ApplicationController
       end
     end
 
-    unless valid 
+    unless valid || Rails.env.development
       redirect_back(fallback_location: new_post_path, alert: "Invalid repo. Github doesn't recognize that repo for your account.")
     end
 

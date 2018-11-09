@@ -12,7 +12,14 @@ Rails.application.routes.draw do
 
 
   # votes
-  get '/votes/:id/upvote',   to: 'votes#upvote',   format: :js
-  get '/votes/:id/downvote', to: 'votes#downvote', format: :js
+  get '/post/:post_id/upvote',   to: 'votes#upvote',   format: :js
+  get '/post/:post_id/downvote', to: 'votes#downvote', format: :js
+
+  get '/comments/:comment_id/upvote',   to: 'votes#upvote',   format: :js
+  get '/comments/:comment_id/downvote', to: 'votes#downvote', format: :js
+
+  post '/comments', to: 'comments#create',  format: :js
+  delete '/comments/:id', to: 'comments#destroy', format: :js
+  get  '/post/:post_id/comments/:id/reply', to: 'comments#reply', format: :js
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

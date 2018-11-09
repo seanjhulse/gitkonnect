@@ -1,0 +1,17 @@
+<%= form_for Comment.new, remote: true do |form| %>
+  <div class="form-field">
+    <label>Add a Comment</label>
+    <% unless @comment.nil? %>
+      <div id="editor-<%= @comment.id %>"></div>
+    <% end %>
+    <div id="editor"></div>
+    <%= form.text_area :comment, id: 'form-data', class: 'hidden-form' %>
+  </div>
+  <%= form.hidden_field :post_id, value: @post.id %>
+  <%= form.hidden_field :parent_id, value: @comment ? @comment.id : nil %>
+  <button type="submit" class="button">
+    Submit 
+    <i class="fas-top fas fa-square"></i>
+    <i class="fas-bottom fas fa-check-square"></i>
+  </button>
+<% end %>

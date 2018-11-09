@@ -9,8 +9,8 @@
               <p class="post-author"><%= post.posted_by %></p>
             </a>
             <div class="actions">
-              <a class="action upvote upvote-icon" href="/votes/<%= post.id %>/upvote" data-remote="true"><i class="fas fa-arrow-up"></i></a>
-              <a class="action downvote downvote-icon" href="/votes/<%= post.id %>/downvote" data-remote="true"><i class="fas fa-arrow-down"></i></a>
+              <a class="action upvote upvote-icon" href="/post/<%= post.id %>/upvote" data-remote="true"><i class="fas fa-arrow-up"></i></a>
+              <a class="action downvote downvote-icon" href="/post/<%= post.id %>/downvote" data-remote="true"><i class="fas fa-arrow-down"></i></a>
               <span id="vote-count-<%= post.id %>"><%= post.votes.sum {|vote| vote[:vote] } %></span>
             </div>
           </li>
