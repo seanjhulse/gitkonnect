@@ -1,20 +1,17 @@
 <li class="comment-item">
-  <div class="comment" id="comment-<%= comment.id %>">
-    <%= comment.comment.html_safe %>
-    <a class="link" href="/post/<%= @post.id %>/comments/<%= comment.id %>/reply" data-remote="true">Reply</a>
-    <% if current_user && comment.user_id == current_user.id %>
-      <a class="link" href="/comments/<%= comment.id %>" data-remote="true" data-method="delete" data-confirm="Are you sure?" rel="nofollow">
-        Delete
-      </a>
+  <a class="close-thread-button">[-]</a>
+  <span class="comment-author"><%= comment.posted_by %></span>
+  <div class="thread">
+    <div id="comment-container-<%= comment.id %>">
+      <div id="comment-<%= comment.id %>">
+        <span class="comment"><%= comment.comment.html_safe %></span>
+        <%= render partial: 'comments/links', locals: { comment: comment } %>
+      </div>
+    </div>
+    <% comment.children.hot.each do |child| %>
+      <ul class="child-thread">
+        <%= render partial: 'comments/comment', locals: { comment: child } %>
+      </ul>
     <% end %>
-    <a class="action upvote upvote-icon" href="/comments/<%= comment.id %>/upvote" data-remote="true"><i class="fas fa-arrow-up"></i></a>
-    <a class="action downvote downvote-icon" href="/comments/<%= comment.id %>/downvote" data-remote="true"><i class="fas fa-arrow-down"></i></a>
-    <span id="vote-count-<%= comment.id %>"><%= comment.votes.sum {|vote| vote[:vote] } %></span>
   </div>
-  <% comment.children.hot.each do |child| %>
-    <button class="close-thread-button" onclick="this.nextSibling.nextSibling.classList.toggle('hide');">[-]</button>
-    <ul class="child-thread">
-      <%= render partial: 'comments/comment', locals: { comment: child } %>
-    </ul>
-  <% end %>
 </li>

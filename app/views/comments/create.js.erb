@@ -3,8 +3,14 @@
   <% comment = @comment %>
   commentsContainer.insertAdjacentHTML('afterbegin', "<%= j render(partial: 'comment', locals: { comment: comment }) %>");
 <% else %>
-  var commentsContainer = document.getElementById('comment-' + <%= @comment.parent %>);
+  var parentContainer = document.getElementById('comment-' + <%= @comment.parent %>);
+  
+  var commentContainer = document.createElement('ul');
+  commentContainer.classList.add('child-thread');
+
+  parentContainer.append(commentContainer);
+  
   <% comment = @comment %>
-  commentsContainer.insertAdjacentHTML('beforeend', "<%= j render(partial: 'comment', locals: { comment: comment }) %>");
-  commentsContainer.querySelector('form').remove();
+  commentContainer.insertAdjacentHTML('beforeend', "<%= j render(partial: 'comment', locals: { comment: comment }) %>");
+  parentContainer.querySelector('form').remove();
 <% end %>

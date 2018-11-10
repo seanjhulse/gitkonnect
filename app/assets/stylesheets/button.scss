@@ -40,6 +40,10 @@
   &.green {
     background-color: #68af5f;
   }
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
 }
 
 .button-link:hover {

@@ -1,18 +1,41 @@
 li.comment-item {
   list-style: none;
   border-left: 2px solid #dadada;
-}
-.comment {
-  margin: 10px;
+  padding-left: 10px;
+  position: relative;
+  min-height: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .child-thread {
   display: block;
-
+  margin: 20px;
+  padding-left: 25px;
+}
+.thread {
   &.hide {
     display: none;
   }
 }
 .close-thread-button {
-  display: block;
-  margin: 10px;
+  position: absolute;
+  color: #adadad;
+  left: -30px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.link {
+  font-size: 12px;
+  padding: 0px 5px;
+}
+.comment-links {
+  display: inline-block;
+}
+.comment-author {
+  text-decoration: none;
+  font-size: 12px;
+  margin: 0;
+  color: #555;
+  display: inline-block;
 }

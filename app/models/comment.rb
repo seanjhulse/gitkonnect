@@ -15,6 +15,7 @@ class Comment < ApplicationRecord
   scope :hot,    -> { sort_by(&:hot) }           # hottest posts
   scope :newest, -> { order(created_at: :desc) } # most recent posts
 
+
   # returns the children comments
   def children 
     Comment.where(parent_id: self.id)
@@ -34,7 +35,6 @@ class Comment < ApplicationRecord
   end
 
   def hot
-    p self.votes
     score = votes.sum {|vote| vote[:vote] }
     displacement = Math.log( [score.abs, 1].max,  10 )
 
@@ -48,4 +48,5 @@ class Comment < ApplicationRecord
 
     return (displacement * sign.to_f) + ( epoch_seconds / 45000 )
   end 
+
 end
