@@ -1,3 +1,7 @@
+if(document.getElementById('new_comment')){
+  document.getElementById('new_comment').remove();
+};
+
 var comment = document.getElementById("comment-" + <%= @comment.id %>);
 comment.insertAdjacentHTML('beforeend', "<%= j render(partial: 'form', locals: { comment: @comment }) %>");
 

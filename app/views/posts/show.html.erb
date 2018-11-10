@@ -5,13 +5,13 @@
   <!-- Voting -->
   <a class="action upvote upvote-icon" href="/post/<%= @post.id %>/upvote" data-remote="true"><i class="fas fa-arrow-up"></i></a>
   <a class="action downvote downvote-icon" href="/post/<%= @post.id %>/downvote" data-remote="true"><i class="fas fa-arrow-down"></i></a>
-  <span id="vote-count-<%= @post.id %>"><%= @post.votes.sum {|vote| vote[:vote] } %></span>
+  <span class="vote-count" id="vote-count-<%= @post.id %>"><%= @post.votes.sum {|vote| vote[:vote] } %></span>
   <!--/Voting -->
 
+  <br/>
+  <br/>
   <% if current_user && @post.user_id == current_user.id %>
-    <br/>
-    <br/>
-    <a class="button-link purple" href="<%= edit_post_path(@post) %>">
+    <a class="button-link orange" href="<%= edit_post_path(@post) %>">
       Edit&nbsp;
       <i class="fas-top fas fa-edit"></i>
       <i class="fas-bottom fas fa-arrow-alt-circle-right"></i>

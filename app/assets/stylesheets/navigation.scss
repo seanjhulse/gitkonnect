@@ -1,8 +1,8 @@
 nav.navigation {
   --navigation-padding: 10px; 
   padding: var(--navigation-padding);
-  background-color: var(--steel);
-  border-bottom: 2px solid var(--green);
+  background-color: var(--red);
+  border-bottom: 2px solid #B80000;
 }
 ul.navigation-list {
   margin: 0;
@@ -30,8 +30,8 @@ a.regular-navigation-link {
 }
 a.branding-link {
   letter-spacing: 1px;
-  color: var(--green);
+  color: white;
 }
 .fa-user-circle {
-  color: var(--green);
+  color: white;
 }

@@ -2,6 +2,10 @@ class CommentsController < ApplicationController
   before_action :set_comment, except: [:create]
 
   def create
+    if current_user.nil?
+      render 'error.js.erb'
+      return
+    end
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     @comment.save
@@ -9,6 +13,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    if @comment.user_id != current_user.id
+      return
+    end
     @comment.comment = "<i>Deleted</i><br/>"
     @comment.save
   end
