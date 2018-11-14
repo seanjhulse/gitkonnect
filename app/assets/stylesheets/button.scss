@@ -2,6 +2,7 @@
   position: relative;
   padding: 5px 10px;
   padding-right: 25px;
+  margin-right: 5px;  
   cursor: pointer;
   overflow: hidden;
   font-size: 14px;
@@ -25,9 +26,11 @@
     transition: transform 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28);
   }
   .fas-top {
+    opacity: 1;
     transform: translate(2px, 1px);
   }
   .fas-bottom {
+    opacity: 0;
     transform: translate(2px, 25px);
   }
 
@@ -57,9 +60,11 @@
     background-color: #57944f;
   }
   .fas-top {
+    opacity: 0;
     transform: translate(2px, 50px);
   }
   .fas-bottom {
+    opacity: 1;
     transform: translate(2px, 1px);
   }
 }

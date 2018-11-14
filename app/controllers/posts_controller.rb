@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   before_action :set_any_post, only:   [:show]
 
   def index
-    @posts = Post.page(params.has_key?(:page) ? params[:page] : 1).hot
+    @posts = Post.hot
   end
 
   def new

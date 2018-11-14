@@ -20,8 +20,10 @@ class CommentsController < ApplicationController
         format.json { render json: {"Success": "Comment created."} }
         format.js   { render 'create.js.erb' }
       else
-        format.json { render json: {"Error": "Comment could not be created"} }
-        format.js   { render 'error.js.erb' }
+        format.js   {
+          @message = "Error: #{@comment.errors.messages[:comment].join('<br/>')}"
+          render 'layouts/errors.js.erb' 
+        }
       end
     end
   end

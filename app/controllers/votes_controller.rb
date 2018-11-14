@@ -16,7 +16,9 @@ class VotesController < ApplicationController
       @vote.vote = 1
     end
 
-    @vote.save!
+    if @vote.save!
+      VoteWorker.perform_async
+    end
   end
 
   def downvote
@@ -31,7 +33,9 @@ class VotesController < ApplicationController
       @vote.vote = -1
     end
 
-    @vote.save!
+    if @vote.save!
+      VoteWorker.perform_async
+    end
   end
 
   private

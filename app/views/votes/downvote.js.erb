@@ -1,4 +1,10 @@
 var currentVote = document.getElementById('vote-count-' + <%= @vote.voters_id %>);
+
+currentVote.parentElement.querySelector('.downvote-icon').classList.toggle('voted');
+if(currentVote.parentElement.querySelector('.upvote-icon').classList.contains('voted')) {
+  currentVote.parentElement.querySelector('.upvote-icon').classList.toggle('voted');
+}
+
 <% if @vote.voters_type == 'Post' %>
   currentVote.innerHTML = <%= Post.find(@vote.voters_id).votes.sum {|vote| vote[:vote] } %>;
 <% else %>

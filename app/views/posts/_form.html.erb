@@ -1,17 +1,14 @@
 <%= form_for(@post) do |form| %>
   <div class="form-field">
-    <label>Title</label>
-    <%= form.text_field :title, required: true, placeholder: "Help me build feature X" %>
+    <%= form.text_field :title, required: true, placeholder: "Title" %>
   </div>
   <div class="form-field">
-    <label>Description</label>
     <div id="editor"></div>
     <%= form.text_area :description, id: 'form-data', class: 'hidden-form' %>
   </div>
   <div class="form-field">
     <br/>
-    <label>Select your repo</label>
-    <%= form.select :repo, @repos.collect { |repo| [repo["name"], repo["html_url"]]}, { include_blank: "..." }, required: true %>
+    <%= form.select :repo, @repos.collect { |repo| [repo["name"], repo["html_url"]]}, { include_blank: "Select your repo" }, required: true %>
   </div>
   <div>
     <br/>

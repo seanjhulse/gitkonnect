@@ -6,7 +6,7 @@ class Post < ApplicationRecord
 
   validates :title, :description, :presence => true
 
-  scope :hot,    -> { sort_by(&:hot).reverse }   # hottest posts
+  scope :hot,    -> { order(rank: :desc) }       # hottest posts
   scope :newest, -> { order(created_at: :desc) } # most recent posts
 
 
@@ -22,7 +22,6 @@ class Post < ApplicationRecord
   end
 
   def hot
-    p self.votes
     score = votes.sum {|vote| vote[:vote] }
     displacement = Math.log( [score.abs, 1].max,  10 )
 

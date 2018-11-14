@@ -31,6 +31,7 @@ gem 'devise'
 gem 'omniauth-github'
 
 gem 'kaminari'
+gem 'sidekiq'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

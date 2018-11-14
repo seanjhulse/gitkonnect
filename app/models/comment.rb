@@ -12,7 +12,7 @@ class Comment < ApplicationRecord
   has_one :parent, :foreign_key => :parent_id
 
   # SCOPES
-  scope :hot,    -> { sort_by(&:hot) }           # hottest posts
+  scope :hot,    -> { order(rank: :desc) }       # hottest posts
   scope :newest, -> { order(created_at: :desc) } # most recent posts
 
 

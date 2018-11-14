@@ -4,7 +4,7 @@
 <% @posts.each do |post| %>
   <li class="user-post">
     <a class="user-post-link" href="<%= post_path(post) %>"><%= post.title %></a>
-    <a class="button-link purple" href="<%= edit_post_path(post) %>">Edit <i class="fas-top fas fa-edit"></i><i class="fas-bottom fas fa-arrow-alt-circle-right"></i></a>
+    <a class="button-link orange" href="<%= edit_post_path(post) %>">Edit <i class="fas-top fas fa-edit"></i><i class="fas-bottom fas fa-arrow-alt-circle-right"></i></a>
     <a class="button-link red" href="<%= post_path(post) %>" data-method="delete" data-confirm="Are you sure?" rel="nofollow">Destroy <i class="fas-top fas fa-trash-alt"></i><i class="fas-bottom fas fa-arrow-alt-circle-right"></i></a>
   </li>
 <% end %>
@@ -20,8 +20,13 @@
     </div>
     <div class="switch">
       <%= hidden_field_tag "setting[code_theme]", '' %>
-      <input id="switcher" type="checkbox" class="switch-input" name="setting[code_theme]" type="hidden" value="<%= current_user.setting.code_theme %>" <%= current_user.setting.code_theme == 1 ? "checked" : "" %>">
-      <label for="switcher" class="switch-label">Code Style: Dark Theme</label>
+      <% if current_user.setting.code_theme %>
+        <input id="switcher" type="checkbox" class="switch-input" name="setting[code_theme]" type="hidden" value="<%= current_user.setting.code_theme %>" checked>
+        <label for="switcher" class="switch-label">Code Style: Dark Theme</label>
+      <% else %>
+        <input id="switcher" type="checkbox" class="switch-input" name="setting[code_theme]" type="hidden" value="<%= current_user.setting.code_theme %>">
+        <label for="switcher" class="switch-label">Code Style: Dark Theme</label>
+      <% end %>
     </div>
   </div>
   <br/>

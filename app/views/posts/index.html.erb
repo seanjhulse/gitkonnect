@@ -1,6 +1,11 @@
 <h1>Posts</h1>
 <div class="posts-layout">
   <div class="posts-body">
+    <a class="button-link orange" href="/posts/sort/new">
+      New
+      <i class="fas-top fas fa-newspaper"></i>
+      <i class="fas-bottom fas fa-newspaper"></i>
+    </a>
     <ul class="posts-list">
       <% @posts.each do |post| %>
           <li class="posts-item">
@@ -8,11 +13,7 @@
               <p class="post-title"><%= post.title %></p>
               <p class="post-author"><%= post.posted_by %></p>
             </a>
-            <div class="actions">
-              <a class="action upvote upvote-icon" href="/post/<%= post.id %>/upvote" data-remote="true"><i class="fas fa-arrow-up"></i></a>
-              <a class="action downvote downvote-icon" href="/post/<%= post.id %>/downvote" data-remote="true"><i class="fas fa-arrow-down"></i></a>
-              <span class="vote-count" id="vote-count-<%= post.id %>"><%= post.votes.sum {|vote| vote[:vote] } %></span>
-            </div>
+            
           </li>
       <% end %>
     </ul>
