@@ -1,0 +1,8 @@
+if(document.getElementsByClassName('edit_comment')[0]) {
+  document.getElementsByClassName('edit_comment')[0].remove();
+};
+
+var comment = document.getElementById('comment-' + <%= @comment.id %>);
+comment.innerHTML = "<%= j @comment.comment.html_safe %>"
+comment.insertAdjacentHTML('beforeend', "<%= j render(partial: 'comments/links', locals: { comment: @comment }) %>");
+comment.style.display = 'block';

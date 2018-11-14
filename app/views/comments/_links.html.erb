@@ -1,0 +1,9 @@
+<%= render partial: 'comments/vote', locals: { comment: comment } %>
+
+<div class="comment-links">
+  <a class="link" href="/post/<%= @post.id ? @post.id : comment.post_id %>/comments/<%= comment.id %>/new" data-remote="true"><i class="fas fa-comment"></i> Reply</a>
+  <% if current_user && comment.user_id == current_user.id %>
+    <a class="link" href="/comments/<%= comment.id %>" data-remote="true" data-method="delete" data-confirm="Are you sure?" rel="nofollow">Delete</a>
+    <a class="link" href="/comments/<%= comment.id %>/edit" data-remote="true">Edit</a>
+  <% end %>
+</div>

@@ -1,0 +1,19 @@
+#flash {
+  position: fixed;
+  top: -50px;
+  left: 50%;
+  padding: 10px 25px;
+  transform: translatex(-50%);
+  background: white;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 1px solid var(--red);
+  box-shadow: 3px 4px 4px 0px rgba(0,0,0,0.33);
+  border-top: 0px;
+  z-index: 999;
+
+  &.dropdown {
+    transition: all 0.25s cubic-bezier(0.24, 0.84, 0.29, 0.93);
+    top: 0px;
+  }
+}

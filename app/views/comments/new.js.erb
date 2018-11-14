@@ -1,0 +1,40 @@
+if(document.getElementById('reply-form')) {
+  document.getElementById('reply-form').remove();
+};
+
+var comment = document.getElementById("comment-" + <%= @parent.id %>);
+comment.insertAdjacentHTML('beforeend', "<%= j render(partial: 'reply', locals: { comment: @comment }) %>");
+
+
+var toolbarOptions = [
+  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+  ['blockquote', 'code-block'],
+
+  [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+
+  [{ 'align': [] }],
+
+  ['clean']                                         // remove formatting button
+];
+
+var editorEl = document.getElementById("reply");
+
+if(editorEl) {
+  var editor = new Quill('#reply', {
+    modules: { 
+      toolbar: toolbarOptions
+    },
+    theme: 'snow'
+  });
+
+  var formData = editorEl.parentElement.querySelector('#form-data');
+
+  editor.on('text-change', function() {
+    var justHtml = editor.root.innerHTML;
+    formData.innerHTML = justHtml;
+  });
+
+  editor.root.innerHTML = '';
+}

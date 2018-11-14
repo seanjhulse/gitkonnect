@@ -1,0 +1,22 @@
+<%= form_for @comment, remote: true, html: { id: 'reply-form' } do |form| %>
+  <div class="form-field">
+    <label>Add a Comment</label>
+    <% if @comment.id %>
+      <div id="reply-<%= @comment.id %>"></div>
+    <% else %>
+      <div id="reply"></div>
+    <% end %>
+    <%= form.text_area :comment, id: 'form-data', class: 'hidden-form' %>
+  </div>
+  <%= form.hidden_field :post_id, value: @post.id %>
+  <%= form.hidden_field :parent_id, value: @parent ? @parent.id : nil %>
+  <button type="submit" class="button">
+    Submit 
+    <i class="fas-top fas fa-square"></i>
+    <i class="fas-bottom fas fa-check-square"></i>
+  </button>
+  <a type="button" class="button-link red cancel-reply-button" onclick="cancelReplyButton()">
+    Cancel 
+    <i class="fas fa-times"></i>
+  </a>
+<% end %>

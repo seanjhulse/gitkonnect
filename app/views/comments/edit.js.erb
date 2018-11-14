@@ -1,0 +1,41 @@
+if(document.getElementsByClassName('edit_comment')[0]) {
+  document.getElementsByClassName('edit_comment')[0].remove();
+};
+
+var comment = document.getElementById("comment-" + <%= @comment.id %>);
+var commentContainer = document.getElementById("comment-container-" + <%= @comment.id %>);
+comment.style.display = 'none';
+commentContainer.insertAdjacentHTML('afterbegin', "<%= j render(partial: 'reply', locals: { comment: @comment, parent: @parent }) %>");
+
+var toolbarOptions = [
+  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+  ['blockquote', 'code-block'],
+
+  [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+
+  [{ 'align': [] }],
+
+  ['clean']                                         // remove formatting button
+];
+
+var editorEl = document.getElementById("reply-" + <%= @comment.id %>);
+
+if(editorEl) {
+  var editor = new Quill('#reply-' + <%= @comment.id %>, {
+    modules: { 
+      toolbar: toolbarOptions
+    },
+    theme: 'snow'
+  });
+
+  var formData = editorEl.parentElement.querySelector('#form-data');
+
+  editor.on('text-change', function() {
+    var justHtml = editor.root.innerHTML;
+    formData.innerHTML = justHtml;
+  });
+
+  editor.root.innerHTML = "<%= j @comment.comment.html_safe %>";
+}

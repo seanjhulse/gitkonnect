@@ -1,0 +1,25 @@
+.voted {
+  &.upvote-icon {    
+    color: var(--orange);
+  }
+  &.downvote-icon {
+    color: var(--purple);
+  }
+}
+.upvote-icon {
+  color: #c1c1c1;
+  font-size: 12px;
+  &:hover {
+    color: var(--orange);
+  }
+}
+.downvote-icon {
+  color: #c1c1c1;
+  font-size: 12px;
+  &:hover {
+    color: var(--purple);
+  }
+}
+.vote-count {
+  font-size: 12px;
+}

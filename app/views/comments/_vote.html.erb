@@ -1,0 +1,5 @@
+<div class="actions">
+  <a class="action vote upvote upvote-icon <%= Vote.where(voters_id: comment.id, user_id: current_user.id, vote: 1).count > 0 ? 'voted' : '' %>" href="/comments/<%= comment.id %>/upvote" data-remote="true"><i class="fas fa-arrow-up"></i></a>
+  <a class="action vote downvote downvote-icon <%= Vote.where(voters_id: comment.id, user_id: current_user.id, vote: -1).count > 0 ? 'voted' : '' %>" href="/comments/<%= comment.id %>/downvote" data-remote="true"><i class="fas fa-arrow-down"></i></a>
+  <span id="vote-count-<%= comment.id %>"><%= comment.votes.sum {|vote| vote[:vote] } %></span>
+</div>
