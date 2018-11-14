@@ -1,11 +1,18 @@
 <h1>Posts</h1>
 <div class="posts-layout">
   <div class="posts-body">
-    <a class="button-link orange" href="/posts/sort/new">
+    <a class="button-link red" href="/">
+      Hot
+      <i class="fas-top fas fa-fire"></i>
+      <i class="fas-bottom fas fa-arrow-circle-right"></i>
+    </a>
+    <a class="button-link green" href="/posts/sort/new">
       New
       <i class="fas-top fas fa-newspaper"></i>
-      <i class="fas-bottom fas fa-newspaper"></i>
+      <i class="fas-bottom fas fa-arrow-circle-right"></i>
     </a>
+    <br/>
+    <br/>
     <ul class="posts-list">
       <% @posts.each do |post| %>
           <li class="posts-item">
@@ -24,7 +31,7 @@
       Need some help on a project?
       <br/>
       <br/>
-      <a class="button-link orange" href="/posts/new">Create a new post <i class="fas-top fas fa-question-circle"></i><i class="fas-bottom fas fa-plus-square"></i></a>
+      <a class="button-link green" href="/posts/new">Create a new post <i class="fas-top fas fa-question-circle"></i><i class="fas-bottom fas fa-plus-square"></i></a>
     </div>
   </div>
 </div>

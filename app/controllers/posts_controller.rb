@@ -7,7 +7,16 @@ class PostsController < ApplicationController
   before_action :set_any_post, only:   [:show]
 
   def index
-    @posts = Post.hot
+    if params.has_key?(:type)
+      case params[:type]
+      when "new"
+        @posts = Post.newest
+      else
+        @posts = Post.hot
+      end
+    else
+      @posts = Post.hot
+    end
   end
 
   def new

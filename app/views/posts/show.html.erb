@@ -2,11 +2,7 @@
   <h1 class="post-title"><%= @post.title %></h1>
   <p class="post-author"><%= @post.posted_by %>
 
-  <!-- Voting -->
-  <a class="action upvote upvote-icon" href="/post/<%= @post.id %>/upvote" data-remote="true"><i class="fas fa-arrow-up"></i></a>
-  <a class="action downvote downvote-icon" href="/post/<%= @post.id %>/downvote" data-remote="true"><i class="fas fa-arrow-down"></i></a>
-  <span class="vote-count" id="vote-count-<%= @post.id %>"><%= @post.votes.sum {|vote| vote[:vote] } %></span>
-  <!--/Voting -->
+  <%= render partial: 'vote', locals: { post: @post } %>
 
   <br/>
   <br/>

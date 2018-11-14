@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :settings
 
   root 'posts#index'
+  get  '/posts/sort/:type', to: 'posts#index'
+
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   
